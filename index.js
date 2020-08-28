@@ -48,8 +48,7 @@ client.on('message', message => {
   const command = args.shift().toLowerCase()
   
   if(!client.commands.has(command)) return;
-  client.commands.get(command).run(client, message, args)
-  
+     client.commands.get(command).run(client, message, args)
 })
 
 client.login(process.env.TOKEN)
