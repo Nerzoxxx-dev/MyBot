@@ -47,7 +47,7 @@ for(const f of commandFiles){
   })
   var helpEmbed = new MessageEmbed()
   .setTitle('Panneau des commandes')
-  .setDescription(`**__Mon prefix__** est /. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}`)
+  .setDescription(`**__Mon prefix__** est /. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}**`)
   .setColor(process.env.COLOR)
   .addField('Commande(s) d\'information :', infoName.length > 0 ? infoName.splice(infoName.indexOf('`help`', 6)).sort().join(', ') : '``')
   .addField('Commande(s) fun :', funName.length > 0 ? funName.sort().join(', '): '``')
@@ -60,7 +60,7 @@ for(const f of commandFiles){
   
 var noSearch = true
 for(c of allCommands){
-    if((args[0] === c.name.replace("`", "").replace("`", "") || c.aliase.indexOf(args[0]) !== -1) && !args[0] === 'help'){
+    if(args[0] === c.name.replace("`", "").replace("`", "") || c.aliase.indexOf(args[0]) !== -1 && !args[0] === 'help'){
        var helpCommandEmbed = new MessageEmbed()
        .setTitle('Informations pour la commande ' + args[0])
        .setDescription('Description de la commande : ' + c.description)
@@ -90,5 +90,5 @@ module.exports.help = {
   name: 'help',
   description: 'Affiche la liste des commandes disponibles',
   category: 'info',
-  aliase: ['test']
+  aliase: []
 }
