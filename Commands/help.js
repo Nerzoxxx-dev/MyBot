@@ -90,5 +90,5 @@ module.exports.help = {
   name: 'help',
   description: 'Affiche la liste des commandes disponibles',
   category: 'info',
-  aliase: ['test']
+  aliase: []
 }
