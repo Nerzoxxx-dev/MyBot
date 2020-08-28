@@ -47,7 +47,7 @@ for(const f of commandFiles){
   })
   var helpEmbed = new MessageEmbed()
   .setTitle('Panneau des commandes')
-  .setDescription(`**__Mon prefix__** est /. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}`)
+  .setDescription(`**__Mon prefix__** est /. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}**`)
   .setColor(process.env.COLOR)
   .addField('Commande(s) d\'information :', infoName.length > 0 ? infoName.splice(infoName.indexOf('`help`', 6)).sort().join(', ') : '``')
   .addField('Commande(s) fun :', funName.length > 0 ? funName.sort().join(', '): '``')
