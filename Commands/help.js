@@ -91,4 +91,8 @@ module.exports.help = {
   description: 'Affiche la liste des commandes disponibles',
   category: 'info',
   aliase: []
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 97cb03702a127d15c137cadee534377fd3860537
