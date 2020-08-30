@@ -53,7 +53,7 @@ for(const f of commandFiles){
   })
   var helpEmbed = new MessageEmbed()
   .setTitle('Panneau des commandes')
-  .setDescription(`**__Mon prefix__** actuel sur le serveur est ${guildAPI.getPrefix(message.guild.id)}. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}**`)
+  .setDescription(`**__Mon prefix__** actuel sur le serveur est ${guildAPI.getPrefix(message.guild.id)}. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre ${guildAPI.getPrefix(message.guild.id)}{nom_de_la_commande}**`)
   .setColor(process.env.COLOR)
   .addField('Commande(s) d\'information (' + infoName.length +') :', infoName.length > 0 ? infoName.sort().join(', ') : '``')
   .addField('Commande(s) fun (' + funName.length + ') :', funName.length > 0 ? funName.sort().join(', '): '``')
