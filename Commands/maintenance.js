@@ -25,5 +25,5 @@ module.exports.help = {
     name: 'maintenance',
     description: 'Active ou désactive une maintenance.',
     category: 'developpeur',
-    permissions: 'DEVELOPPERS'
+    permissions: ['DEVELOPPERS']
 }
