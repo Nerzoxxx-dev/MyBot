@@ -13,5 +13,6 @@ module.exports.help = {
   name: 'reload',
   description: 'Redemarre le bot.',
   category: 'developpeur',
-  aliase: ['rl', 'restart']
+  aliase: ['rl', 'restart'],
+  permissions: ['DEVELOPPERS']
 }
