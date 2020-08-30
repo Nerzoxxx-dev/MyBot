@@ -27,5 +27,6 @@ module.exports.help = {
   name: 'eval',
   description: 'Evalue un code donné en argument.',
   category: 'developpeur',
-  aliase: []
+  aliase: [],
+  permissions: ['DEVELOPPERS']
 }
