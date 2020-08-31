@@ -27,11 +27,8 @@ module.exports.run = (client, message, args) => {
 
 module.exports.help = {
     name: 'maintenance',
-<<<<<<< HEAD
     description: 'Active ou désactive le mode maintenance.',
-=======
     description: 'Active ou désactive une maintenance.',
->>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2
     category: 'developpeur',
     permissions: ['DEVELOPPERS']
 }
