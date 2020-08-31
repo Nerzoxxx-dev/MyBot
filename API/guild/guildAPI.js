@@ -1,5 +1,8 @@
 const fs = require('fs')
+<<<<<<< HEAD
 const prefix = '/'
+=======
+>>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2
 const guildfile = require('../../guild/config/guild.json')
 
 module.exports = class guildAPI {
@@ -23,7 +26,11 @@ module.exports = class guildAPI {
           }
     }
     static setConfig(id){
+<<<<<<< HEAD
         guildfile[id] = {
+=======
+        guildfile[guild.id] = {
+>>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2
             prefix: prefix
           }
           fs.writeFileSync('./guild/config/guild.json', JSON.stringify(guildfile))

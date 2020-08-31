@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"maintenance":{"enable":false,"raison":""}}
+=======
+{"maintenance":{"enable":true,"raison":"developpement v1"}}
+>>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2

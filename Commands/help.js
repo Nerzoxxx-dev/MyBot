@@ -57,6 +57,7 @@ for(const f of commandFiles){
   .setColor(process.env.COLOR)
   .addField(' > :page_facing_up: Informations (' + infoName.length +') :', infoName.length > 0 ? infoName.sort().join(', ') : '``')
   .addField(' > :joy: Fun (' + funName.length + ') :', funName.length > 0 ? funName.sort().join(', '): '``')
+<<<<<<< HEAD
   .addField(' > :pushpin: Utile (' + utileName.length +') :', utileName.length > 0 ? utileName.sort().join(', ') : '``')
   .addField(' > :computer: Developeur (' + developpementName.length + '): ', developpementName.length > 0 ? developpementName.sort().join(', ') : '``')
   .addField(' > :police_officer: Modération (' + moderationName.length + ') : ', moderationName.length > 0 ? moderationName.sort().join(', ') : '``')
@@ -65,6 +66,14 @@ for(const f of commandFiles){
   .addField(' > :newspaper: Besoin de plus d\'informations sur une commande ?', 'Utilisez **' + guildAPI.getPrefix(message.guild.id) + 'help <command>** !')
   .addField(' > :question: Une question ?', 'Discord support : [[Cliquez-ici]](https://discord.gg/Atvfs7)')
   .addField('> :lock: Un problème / bug de commande ?', 'N\'hesitez pas à utiliser la commande **' + guildAPI.getPrefix(message.guild.id) + 'report <command> <problem> !**')
+=======
+  .addField(' > :pushpin: Utiles (' + utileName.length +') :', utileName.length > 0 ? utileName.sort().join(', ') : '``')
+  .addField(' > :computer: Developeurs (' + developpementName.length + '): ', developpementName.length > 0 ? developpementName.sort().join(', ') : '``')
+  .addField(' > :police_officer: Modération (' + moderationName.length + ') : ', moderationName.length > 0 ? moderationName.sort().join(', ') : '``')
+  .addField(' > :shield: Administration (' + adminName.length + ') :', adminName.length > 0 ? adminName.sort().join(', ') : '``')
+  .addField(' > :file_folder: Configuration (' + configName.length + ') :', configName.length > 0 ? configName.sort().join(', ') : '``')
+  .addField(' > :question: Une question ?', 'Discord support : [[Cliquez-ici]](https://discord.gg/Atvfs7)')
+>>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2
   .setFooter('Demandé par ' + message.author.tag);
   if(!args[0]) return message.channel.send(helpEmbed)
   if(args[0] === 'help') return message.channel.send(helpEmbed)

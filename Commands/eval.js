@@ -22,6 +22,7 @@ module.exports.run = (client, message, args) => {
       message.channel.send(':x: **ERREUR** `' + e + '`')
     }
   }
+<<<<<<< HEAD
   module.exports.help = {
     name: 'eval',
     description: 'Evalue un code donné en argument.',
@@ -29,3 +30,20 @@ module.exports.run = (client, message, args) => {
     aliase: [],
     permissions: ['DEVELOPPERS']
 }
+=======
+  try{
+    var evaluated = eval(toEval)
+    message.channel.send('```' + evaluated + '```')
+  }catch(e){
+    message.channel.send(':x: **ERREUR** `' + e + '`')
+  }
+}
+
+module.exports.help = {
+  name: 'eval',
+  description: 'Evalue un code donné en argument.',
+  category: 'developpeur',
+  aliase: [],
+  permissions: ['DEVELOPPERS']
+}
+>>>>>>> 19c3ac7d3c08fcec957f54b7978239478e669af2
