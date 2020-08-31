@@ -1,10 +1,10 @@
 const { Client, Collection } = require('discord.js')
 const client = new Client()
 const fs = require('fs')
-const guildfile = require('./guild.json')
+const clientAPI = require('./API/client/clientAPI.js')
+const guildAPI = require('./API/guild/guildAPI.js')
 require('dotenv').config()
 
-const prefix = '/'
 client.commands = new Collection()
 
 const commandFiles = fs.readdirSync('./Commands').filter(f => f.endsWith('.js'))
@@ -25,49 +25,27 @@ for(const f of commandFiles){
   }
 }
 
-exports.memberCount = function(){
-  var count = 0
-  client.guilds.cache.map((g) => {
-    count = parseInt(count) + parseInt(g.memberCount)
-  })
-  return count
-}
-exports.serverCount = function(){
-  var count = 0
-  count = parseInt(count) + parseInt(client.guilds.cache.size)
-  return count
-}
-
 client.on('ready', function(){
   setInterval(() => {
-    client.user.setActivity(exports.memberCount() + " membres sur " + exports.serverCount() + " serveurs", {type: "WATCHING"})
+    client.user.setActivity(guildAPI.membersCount(client) + " membres sur " + guildAPI.guildCount(client) + " serveurs", {type: "WATCHING"})
   }, 5000)
 })
 
 client.on('guildCreate', (guild) => {
-    if(!exports.hasOwnData(guild.id)){
-      guildfile[guild.id] = {
-        prefix: prefix
-      }
-      fs.writeFileSync('./guild.json', JSON.stringify(guildfile))
-    }
+    if(!guildAPI.hasOwnData(guild.id)){
+        guildAPI.setConfig(guild.id)
+    }  
 })
 
-exports.hasOwnData = function(id){
-  if(guildfile[id]){
-    return true
-  }else{
-    return false
-  }
-}
-
-exports.getPrefix = function(id){
-  return guildfile[id].prefix
-}
 client.on('message', message => {
-  if(!message.content.startsWith(exports.getPrefix(message.guild.id)) || message.author.bot) return;
+
+  if(!message.content.startsWith(guildAPI.getPrefix(message.guild.id)) || message.author.bot) return;
+
+  if(clientAPI.isMaintenance() && !process.env.TEAM_ID.includes(message.author.id)) return message.channel.send('**:x: Le bot est en maintenance pour la raison ' + clientAPI.getRaisonMaintenance() + ', désolé de la gêne occasionnée.**')
   
-  const args = message.content.slice(prefix.length).trim().split(/ +/g)
+  if(!message.channel.permissionsFor(client.user).has('SEND_MESSAGE')) return;
+  
+  const args = message.content.slice(guildAPI.getPrefix(message.guild.id).length).trim().split(/ +/g)
   
   const command = args.shift().toLowerCase()
   

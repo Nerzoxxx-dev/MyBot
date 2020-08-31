@@ -1,6 +1,6 @@
 const {MessageEmbed} = require('discord.js')
 const fs = require('fs')
-const guildfile = require('../guild.json')
+const guildAPI = require('../API/guild/guildAPI.js')
 
 module.exports.run = (client, message, args) => {
 var allCommands = []
@@ -53,15 +53,18 @@ for(const f of commandFiles){
   })
   var helpEmbed = new MessageEmbed()
   .setTitle('Panneau des commandes')
-  .setDescription(`**__Mon prefix__** actuel sur le serveur est ${guildfile[message.guild.id].prefix}. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre /{nom_de_la_commande}**`)
+  .setDescription(`**__Mon prefix__** actuel sur le serveur est ${guildAPI.getPrefix(message.guild.id)}. **Pour executer la commande souhaitée, il suffit de respecter la syntaxe ci-contre ${guildAPI.getPrefix(message.guild.id)}{nom_de_la_commande}**`)
   .setColor(process.env.COLOR)
-  .addField('Commande(s) d\'information :', infoName.length > 0 ? infoName.splice(infoName.indexOf('`help`', 6)).sort().join(', ') : '``')
-  .addField('Commande(s) fun :', funName.length > 0 ? funName.sort().join(', '): '``')
-  .addField('Commande(s) utiles :', utileName.length > 0 ? utileName.sort().join(', ') : '``')
-  .addField('Commande(s) pour mes developpeurs : ', developpementName.length > 0 ? developpementName.sort().join(', ') : '``')
-  .addField('Commande(s) de modération : ', moderationName.length > 0 ? moderationName.sort().join(', ') : '``')
-  .addField('Commande(s) administratives :', adminName.length > 0 ? adminName.sort().join(', ') : '``')
-  .addField('Commande(s) de configuration :', configName.length > 0 ? configName.sort().join(', ') : '``')
+  .addField(' > :page_facing_up: Informations (' + infoName.length +') :', infoName.length > 0 ? infoName.sort().join(', ') : '``')
+  .addField(' > :joy: Fun (' + funName.length + ') :', funName.length > 0 ? funName.sort().join(', '): '``')
+  .addField(' > :pushpin: Utile (' + utileName.length +') :', utileName.length > 0 ? utileName.sort().join(', ') : '``')
+  .addField(' > :computer: Developeur (' + developpementName.length + '): ', developpementName.length > 0 ? developpementName.sort().join(', ') : '``')
+  .addField(' > :police_officer: Modération (' + moderationName.length + ') : ', moderationName.length > 0 ? moderationName.sort().join(', ') : '``')
+  .addField(' > :shield: Administration (' + adminName.length + ') :', adminName.length > 0 ? adminName.sort().join(', ') : '``')
+  .addField(' > :file_folder: Configuration (' + configName.length + ') :', configName.length > 0 ? configName.sort().join(', ') : '``')
+  .addField(' > :newspaper: Besoin de plus d\'informations sur une commande ?', 'Utilisez **' + guildAPI.getPrefix(message.guild.id) + 'help <command>** !')
+  .addField(' > :question: Une question ?', 'Discord support : [[Cliquez-ici]](https://discord.gg/Atvfs7)')
+  .addField('> :lock: Un problème / bug de commande ?', 'N\'hesitez pas à utiliser la commande **' + guildAPI.getPrefix(message.guild.id) + 'report <command> <problem> !**')
   .setFooter('Demandé par ' + message.author.tag);
   if(!args[0]) return message.channel.send(helpEmbed)
   if(args[0] === 'help') return message.channel.send(helpEmbed)
@@ -90,6 +93,6 @@ for(c of allCommands){
 module.exports.help = {
   name: 'help',
   description: 'Affiche la liste des commandes disponibles',
-  category: 'info',
+  category: 'help',
   aliase: ['test']
 }
